@@ -22,7 +22,11 @@ A formatted string
 This function computes the OR and its 95\% confidence intervals from a logistic regression model.
 }
 \examples{
-OR_95CI(0.5, 0.1, 0.05, 2)
+toydata <- read.table(here("toydata.txt"), header = TRUE)
+logistic_model <- glm(y ~ x1 + x2, data = toydata, family = binomial)
+coefs = summary(logistic_model)$coefficients[,1]
+ses = summary(logistic_model)$coefficients[,2]
+OR_95CI(coefs, ses, 0.05, 2)
 }
 \author{
 Mark Asuncion

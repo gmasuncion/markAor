@@ -6,7 +6,12 @@
 #' @param roundto The precision for rounding the odds ratios and confidence intervals.
 #' @return A formatted string
 #' @author Mark Asuncion
-#' @examples OR_95CI(0.5, 0.1, 0.05, 2)
+#' @examples
+#' toydata <- read.table(here("toydata.txt"), header = TRUE)
+#' logistic_model <- glm(y ~ x1 + x2, data = toydata, family = binomial)
+#' coefs = summary(logistic_model)$coefficients[,1]
+#' ses = summary(logistic_model)$coefficients[,2]
+#' OR_95CI(coefs, ses, 0.05, 2)
 #' @export
 
 OR_95CI <- function(coef, se, siglevel, roundto) {
